@@ -105,7 +105,9 @@ namespace Avro
         /// <param name="value">property value</param>
         internal static void writeIfNotNullOrEmpty(JsonTextWriter writer, string key, string value)
         {
-            if (string.IsNullOrEmpty(value)) return;
+            if (string.IsNullOrEmpty(value) && key != "doc") return;
+            if (string.IsNull(value) && key == "doc") return;
+
             writer.WritePropertyName(key);
             writer.WriteValue(value);
         }

@@ -807,7 +807,7 @@ namespace Avro
 
                 // Process field documentation if it exist and add to the field
                 CodeCommentStatement propertyComment = null;
-                if (!string.IsNullOrEmpty(field.Documentation))
+                if (field.Documentation != null)
                 {
                     propertyComment = createDocComment(field.Documentation);
                     if (propertyComment != null)
